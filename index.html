@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="twilight">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071510">
+<title>Mohammed Hassan &amp; Tehreem — Wedding Invitation</title>
+<meta name="description" content="Mohammed Hassan &amp; Tehreem invite you to celebrate their wedding on Tuesday, 10 November 2026 at Vincent Wedding Lawn, Kausa, Mumbra, Thane.">
+
+<!-- WhatsApp & Social Media Preview Cards -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mohammed Hassan &amp; Tehreem — Wedding Invitation">
+<meta property="og:description" content="Tuesday, 10 November 2026 · 7:00 PM onwards · Vincent Wedding Lawn, Kausa, Mumbra">
+<meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Crect width='100%25' height='100%25' fill='%23071510'/%3E%3Ccircle cx='600' cy='315' r='250' fill='none' stroke='%23d4af37' stroke-width='2' opacity='0.4'/%3E%3Ctext x='50%25' y='46%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='56' fill='%23f5e2a3'%3EMohammed Hassan %26 Tehreem%3C/text%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='26' fill='%23d4af37' letter-spacing='6'%3E10 NOVEMBER 2026 %C2%B7 VINCENT WEDDING LAWN%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Parisienne&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-locked">
+
+<!-- ================= DYNAMIC LIVING BACKDROP CANVAS ================= -->
+<canvas id="backdropCanvas" class="backdrop-canvas" aria-hidden="true"></canvas>
+
+<!-- ================= AMBIENT STAGE LIGHTING & GLOWS ================= -->
+<div class="ambient-glows" aria-hidden="true">
+  <div class="glow glow--top-spotlight"></div>
+  <div class="glow glow--left-orb"></div>
+  <div class="glow glow--right-orb"></div>
+  <div class="ambient-stars"></div>
+  <div class="ambient-drapes"></div>
+</div>
+
+<!-- ================= SVG ASSETS & FILIGREE DEFINITIONS ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Royal Moroccan / Mughal Lantern -->
+    <g id="royalLantern">
+      <path d="M12 2 L12 10 M12 6 C6 6 4 10 4 15 L2 18 L22 18 L20 15 C20 10 18 6 12 6 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M3 18 L6 30 L18 30 L21 18 Z" fill="currentColor" fill-opacity="0.18" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="12" y1="18" x2="12" y2="30" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
+      <path d="M6 30 L12 36 L18 30 Z" fill="currentColor" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="12" cy="24" r="3" fill="currentColor" opacity="0.9"/>
+      <circle cx="12" cy="36" r="1.5" fill="currentColor"/>
+    </g>
+
+    <!-- Luxury Gold Corner Filigree -->
+    <symbol id="luxuryCorner" viewBox="0 0 140 140">
+      <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+        <path d="M4 110 C4 50 50 4 110 4" stroke-width="1.5"/>
+        <path d="M14 112 C14 58 58 14 112 14" opacity="0.6"/>
+        <path d="M24 114 C24 66 66 24 114 24" stroke-width="0.8" opacity="0.4"/>
+        <path d="M4 110 C4 125 12 134 26 134 C36 134 44 126 44 116 C44 102 28 98 16 112"/>
+        <path d="M110 4 C125 4 134 12 134 26 C134 36 126 44 116 44 C102 44 98 28 112 16"/>
+        <path d="M42 42 C56 28 76 24 92 30 C90 46 76 60 56 60 C46 60 40 52 42 42 Z" fill="currentColor" fill-opacity="0.12"/>
+        <path d="M42 42 C28 56 24 76 30 92 C46 90 60 76 60 56 C60 46 52 40 42 42 Z" fill="currentColor" fill-opacity="0.12"/>
+      </g>
+      <circle cx="42" cy="42" r="3.5" fill="currentColor"/>
+      <circle cx="28" cy="28" r="2.2" fill="currentColor" opacity="0.7"/>
+      <circle cx="16" cy="16" r="1.5" fill="currentColor" opacity="0.5"/>
+    </symbol>
+
+    <!-- Royal Floral Crest -->
+    <symbol id="royalCrest" viewBox="0 0 200 60">
+      <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <path d="M100 50 C70 46 40 34 10 12"/>
+        <path d="M100 50 C130 46 160 34 190 12"/>
+        <path d="M100 50 C100 24 100 14 100 8"/>
+        <path d="M85 36 C68 28 55 18 42 6"/>
+        <path d="M115 36 C132 28 145 18 158 6"/>
+      </g>
+      <g fill="currentColor" opacity="0.8">
+        <circle cx="100" cy="8" r="3.2"/>
+        <ellipse cx="80" cy="40" rx="7" ry="3" transform="rotate(-30 80 40)"/>
+        <ellipse cx="64" cy="32" rx="6.5" ry="2.8" transform="rotate(-36 64 32)"/>
+        <ellipse cx="48" cy="22" rx="6" ry="2.5" transform="rotate(-42 48 22)"/>
+        <ellipse cx="32" cy="12" rx="5.5" ry="2.2" transform="rotate(-48 32 12)"/>
+        <ellipse cx="120" cy="40" rx="7" ry="3" transform="rotate(30 120 40)"/>
+        <ellipse cx="136" cy="32" rx="6.5" ry="2.8" transform="rotate(36 136 32)"/>
+        <ellipse cx="152" cy="22" rx="6" ry="2.5" transform="rotate(42 152 22)"/>
+        <ellipse cx="168" cy="12" rx="5.5" ry="2.2" transform="rotate(48 168 12)"/>
+      </g>
+    </symbol>
+
+    <!-- Circular Arabesque Wreath Arc -->
+    <g id="arabesqueArc">
+      <path d="M120 20 C140 20 165 30 185 50 C205 70 215 95 215 120" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="130" cy="22" r="2.5" fill="currentColor"/>
+      <circle cx="150" cy="28" r="3" fill="currentColor"/>
+      <circle cx="170" cy="38" r="2.8" fill="currentColor"/>
+      <circle cx="190" cy="54" r="3.2" fill="currentColor"/>
+      <circle cx="206" cy="74" r="2.6" fill="currentColor"/>
+      <circle cx="214" cy="96" r="3" fill="currentColor"/>
+      <!-- Paisley / Leaf accents along arc -->
+      <path d="M150 28 C158 20 166 22 168 28 C164 33 156 34 150 28 Z" fill="currentColor" opacity="0.6"/>
+      <path d="M172 39 C181 32 190 35 192 41 C187 46 178 46 172 39 Z" fill="currentColor" opacity="0.6"/>
+      <path d="M192 56 C202 50 211 54 212 61 C206 66 197 65 192 56 Z" fill="currentColor" opacity="0.6"/>
+      <path d="M208 76 C218 72 226 77 226 84 C219 88 211 86 208 76 Z" fill="currentColor" opacity="0.6"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- ================= ORNAMENTAL ROYAL BORDER ================= -->
+<div class="frame" aria-hidden="true">
+  <svg class="frame__corner frame__corner--tl" viewBox="0 0 140 140"><use href="#luxuryCorner"></use></svg>
+  <svg class="frame__corner frame__corner--tr" viewBox="0 0 140 140"><use href="#luxuryCorner"></use></svg>
+  <svg class="frame__corner frame__corner--br" viewBox="0 0 140 140"><use href="#luxuryCorner"></use></svg>
+  <svg class="frame__corner frame__corner--bl" viewBox="0 0 140 140"><use href="#luxuryCorner"></use></svg>
+</div>
+
+<!-- ================= ROYAL ENVELOPE / UNVEIL SCREEN ================= -->
+<div class="envelope" id="envelope">
+  <div class="envelope__backdrop-glow" aria-hidden="true"></div>
+  <div class="envelope__inner">
+    
+    <!-- Royal Hanging Lanterns in Envelope -->
+    <div class="envelope__lanterns" aria-hidden="true">
+      <svg class="envelope__lantern" viewBox="0 0 24 40"><use href="#royalLantern"></use></svg>
+      <svg class="envelope__lantern envelope__lantern--center" viewBox="0 0 24 40"><use href="#royalLantern"></use></svg>
+      <svg class="envelope__lantern" viewBox="0 0 24 40"><use href="#royalLantern"></use></svg>
+    </div>
+
+    <p class="envelope__bismillah arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+    <p class="envelope__eyebrow">The Wedding Celebration of</p>
+    
+    <h1 class="envelope__names">
+      <span id="env-groom">Mohammed Hassan</span>
+      <span class="amp">&amp;</span>
+      <span id="env-bride">Tehreem</span>
+    </h1>
+
+    <div class="envelope__divider" aria-hidden="true">
+      <span class="envelope__line"></span>
+      <span class="envelope__gem">✦</span>
+      <span class="envelope__line"></span>
+    </div>
+
+    <p class="envelope__date" id="env-date">Tuesday, 10 November 2026</p>
+    <p class="envelope__venue-tag">Vincent Wedding Lawn · 7:00 PM</p>
+    <p class="envelope__guest" id="env-guest"></p>
+
+    <!-- Out-of-the-Box Royal 3D Gold Embossed Wax Seal Button -->
+    <div class="seal-container">
+      <button class="seal-btn" id="openBtn" aria-label="Open Royal Invitation">
+        <div class="seal-wax-contour" aria-hidden="true"></div>
+        <div class="seal-ring" aria-hidden="true"></div>
+        <div class="seal-core">
+          <span class="seal-sparkle" aria-hidden="true">✦</span>
+          <span class="seal-monogram">M &amp; T</span>
+          <span class="seal-text">OPEN INVITATION</span>
+        </div>
+      </button>
+    </div>
+
+    <p class="envelope__hint">Touch to unveil the invitation · Sound recommended</p>
+  </div>
+</div>
+
+<!-- ================= FLOATING CONTROLS ================= -->
+<div class="floating-controls">
+  <!-- Theme Switcher: Twilight Lawn / Royal Champagne -->
+  <button class="ctrl-btn theme-btn" id="themeToggle" aria-label="Switch Backdrop Atmosphere" title="Toggle Atmosphere">
+    <span class="theme-icon theme-icon--moon" aria-hidden="true">🌙</span>
+    <span class="theme-icon theme-icon--sun" aria-hidden="true">✨</span>
+    <span class="ctrl-btn__tooltip">Change Atmosphere</span>
+  </button>
+
+  <!-- Audio Toggle -->
+  <button class="ctrl-btn music-btn" id="musicBtn" aria-label="Toggle Wedding Music (Zariya)" title="Wedding Music: Zariya" hidden="">
+    <svg viewBox="0 0 24 24" class="music-btn__icon" aria-hidden="true">
+      <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+    </svg>
+    <span class="music-btn__waves"><i></i><i></i><i></i></span>
+    <span class="ctrl-btn__tooltip">Music: Zariya</span>
+  </button>
+</div>
+<audio id="bgm" preload="auto"></audio>
+
+<!-- ================= FALLING GOLDEN PARTICLES CONTAINER ================= -->
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<!-- ================= MAIN INVITATION PAGE ================= -->
+<main class="page" id="page">
+
+  <!-- ================= HERO STAGE (ROYAL BACKDROP ARCH) ================= -->
+  <header class="hero section">
+    
+    <!-- Grand Stage Arch Structure with Royal Floral Swag -->
+    <div class="hero__stage-backdrop" aria-hidden="true">
+      <div class="stage-arch-halo"></div>
+      <div class="stage-floral-garland-wrap">
+        <img src="assets/images/floral/floral_arch_garland.png" alt="" class="stage-garland-img">
+      </div>
+      <div class="stage-festoon-lights">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="stage-hanging-lanterns">
+        <svg class="stage-lantern stage-lantern--1" viewBox="0 0 24 40"><use href="#royalLantern"></use></svg>
+        <svg class="stage-lantern stage-lantern--2" viewBox="0 0 24 40"><use href="#royalLantern"></use></svg>
+        <svg class="stage-lantern stage-lantern--3" viewBox="0 0 24 40"><use href="#royalLantern"></use></svg>
+      </div>
+    </div>
+
+    <div class="hero__frame">
+      <p class="bismillah arabic reveal" id="bismillah"></p>
+      <p class="bismillah__en reveal" id="bismillahEn"></p>
+
+      <p class="hero__eyebrow reveal">The Wedding Celebration of</p>
+      
+      <h1 class="hero__names">
+        <span class="reveal" id="hero-groom">Mohammed Hassan</span>
+        <span class="amp reveal">&amp;</span>
+        <span class="reveal" id="hero-bride">Tehreem</span>
+      </h1>
+
+      <div class="hero__floral-divider reveal" aria-hidden="true">
+        <img src="assets/images/floral/floral_divider_bar.png" alt="" class="floral-bar-img">
+      </div>
+
+      <p class="hero__arabic arabic reveal" id="hero-arabic"></p>
+      <p class="hero__tagline reveal" id="hero-tagline"></p>
+      
+      <div class="hero__badge reveal">
+        <span class="hero__badge-icon">✦</span>
+        <p class="hero__date" id="hero-date"></p>
+        <span class="hero__badge-icon">✦</span>
+      </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <div class="scroll-cue__line"><span></span></div>
+      <span class="scroll-cue__text">SCROLL TO CELEBRATE</span>
+    </div>
+  </header>
+
+  <!-- ================= INVITATION & FAMILIES ================= -->
+  <section class="section invite">
+    <p class="lead reveal" id="inviteIntro"></p>
+
+    <div class="couple-grid">
+      <div class="couple-card reveal">
+        <img src="assets/images/floral/floral_corner.png" class="card-floral-corner card-floral-corner--tl" alt="" aria-hidden="true">
+        <img src="assets/images/floral/floral_corner.png" class="card-floral-corner card-floral-corner--br" alt="" aria-hidden="true">
+        <div class="couple-card__inner">
+          <div class="couple-card__ornament">✦</div>
+          <h2 class="couple-card__name" id="cardGroom">Mohammed Hassan</h2>
+          <p class="couple-card__label" id="groomLabel"></p>
+          <p class="couple-card__parents" id="groomParents"></p>
+          <p class="couple-card__place" id="groomPlace"></p>
+        </div>
+      </div>
+
+      <div class="couple-grid__amp reveal" aria-hidden="true">
+        <span class="amp-gem">✦</span>
+        <span class="amp-text">&amp;</span>
+        <span class="amp-gem">✦</span>
+      </div>
+
+      <div class="couple-card reveal">
+        <img src="assets/images/floral/floral_corner.png" class="card-floral-corner card-floral-corner--tl" alt="" aria-hidden="true">
+        <img src="assets/images/floral/floral_corner.png" class="card-floral-corner card-floral-corner--br" alt="" aria-hidden="true">
+        <div class="couple-card__inner">
+          <div class="couple-card__ornament">✦</div>
+          <h2 class="couple-card__name" id="cardBride">Tehreem</h2>
+          <p class="couple-card__label" id="brideLabel"></p>
+          <p class="couple-card__parents" id="brideParents"></p>
+          <p class="couple-card__place" id="bridePlace"></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="invite__note reveal" id="inviteNote"></p>
+  </section>
+
+  <!-- ================= ROYAL MONOGRAM WREATH ================= -->
+  <section class="section monogram">
+    <div class="wreath reveal">
+      <img src="assets/images/floral/floral_wreath_crest.png" alt="" class="wreath__floral-img" loading="lazy">
+      <div class="wreath__initials">
+        <span id="monoGroom">M</span><span class="amp">&amp;</span><span id="monoBride">T</span>
+      </div>
+    </div>
+    <p class="monogram__line reveal" id="monogramLine"></p>
+  </section>
+
+  <!-- ================= QURANIC VERSE ================= -->
+  <section class="section verse" id="verseSection">
+    <div class="verse__card reveal">
+      <img src="assets/images/floral/floral_corner.png" class="card-floral-corner card-floral-corner--tl" alt="" aria-hidden="true">
+      <img src="assets/images/floral/floral_corner.png" class="card-floral-corner card-floral-corner--br" alt="" aria-hidden="true">
+      <div class="verse__floral-crown" aria-hidden="true">
+        <img src="assets/images/floral/floral_divider_bar.png" alt="" class="verse-floral-bar">
+      </div>
+      <div class="verse__shimmer" aria-hidden="true"></div>
+      <p class="verse__ar arabic" id="verseAr"></p>
+      <p class="verse__en" id="verseEn"></p>
+      <p class="verse__ref" id="verseRef"></p>
+    </div>
+  </section>
+
+  <!-- ================= EVENTS & CELEBRATION ================= -->
+  <section class="section events">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">You are cordially invited to</span>
+      <h2 class="section__title">The Celebration</h2>
+      <div class="section__floral-rule reveal" aria-hidden="true">
+        <img src="assets/images/floral/floral_divider_bar.png" alt="" class="section-floral-bar">
+      </div>
+    </div>
+    <div class="events__grid" id="eventsGrid"></div>
+  </section>
+
+  <!-- ================= STAGE BACKDROP & SETTING ================= -->
+  <section class="section stage-preview">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">An Enchanted Evening at Vincent Wedding Lawn</span>
+      <h2 class="section__title">The Stage &amp; Ambiance</h2>
+      <div class="section__floral-rule reveal" aria-hidden="true">
+        <img src="assets/images/floral/floral_divider_bar.png" alt="" class="section-floral-bar">
+      </div>
+      <p class="lead">Under a starlit lawn sky, illuminated with bespoke golden Moroccan arches, cascading floral chandeliers, and warm lantern glows.</p>
+    </div>
+    <div class="stage-card reveal">
+      <img src="assets/images/floral/floral_corner.png" class="card-floral-corner card-floral-corner--tl" alt="" aria-hidden="true">
+      <img src="assets/images/floral/floral_corner.png" class="card-floral-corner card-floral-corner--br" alt="" aria-hidden="true">
+      <div class="stage-card__media">
+        <img src="assets/images/stage_backdrop.jpg" alt="Vincent Wedding Lawn Stage Backdrop Concept" loading="lazy">
+        <div class="stage-card__overlay">
+          <span class="stage-card__tag">✦ Vincent Wedding Lawn · Evening Ambiance ✦</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COUNTDOWN ================= -->
+  <section class="section countdown">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">The countdown begins</span>
+      <h2 class="section__title">Counting Down Every Moment</h2>
+      <div class="section__floral-rule reveal" aria-hidden="true">
+        <img src="assets/images/floral/floral_divider_bar.png" alt="" class="section-floral-bar">
+      </div>
+    </div>
+    <div class="countdown__grid reveal" id="countdown">
+      <div class="cd"><span class="cd__num" id="cd-d">00</span><span class="cd__lbl">Days</span></div>
+      <div class="cd"><span class="cd__num" id="cd-h">00</span><span class="cd__lbl">Hours</span></div>
+      <div class="cd"><span class="cd__num" id="cd-m">00</span><span class="cd__lbl">Minutes</span></div>
+      <div class="cd"><span class="cd__num" id="cd-s">00</span><span class="cd__lbl">Seconds</span></div>
+    </div>
+    <p class="countdown__msg" id="cdMsg"></p>
+  </section>
+
+  <!-- ================= LOCATION & VENUE ================= -->
+  <section class="section location" id="locationSection">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">Join us at</span>
+      <h2 class="section__title">Vincent Wedding Lawn</h2>
+      <div class="section__floral-rule reveal" aria-hidden="true">
+        <img src="assets/images/floral/floral_divider_bar.png" alt="" class="section-floral-bar">
+      </div>
+      <p class="location__sub reveal">A206, Mumbai - Pune Rd, Rashid Compound, Kausa, Mumbra, Thane</p>
+    </div>
+    <div class="map reveal" id="mapWrap"></div>
+    <div class="location__actions reveal" id="mapActions"></div>
+  </section>
+
+  <!-- ================= RSVP ================= -->
+  <section class="section rsvp" id="rsvpSection">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">Bless us with your presence</span>
+      <h2 class="section__title" id="rsvpHeading">RSVP</h2>
+      <div class="section__floral-rule reveal" aria-hidden="true">
+        <img src="assets/images/floral/floral_divider_bar.png" alt="" class="section-floral-bar">
+      </div>
+    </div>
+    <p class="lead reveal" id="rsvpText"></p>
+    <div class="rsvp__actions reveal" id="rsvpActions"></div>
+    <div class="rsvp__contacts reveal" id="rsvpContacts"></div>
+  </section>
+
+  <!-- ================= CLOSING & SHARE ================= -->
+  <footer class="section closing">
+    <div class="closing__floral-crown reveal" aria-hidden="true">
+      <img src="assets/images/floral/floral_arch_garland.png" alt="" class="closing-garland-img">
+    </div>
+    <p class="closing__ar arabic reveal" id="closingAr"></p>
+    <p class="closing__en reveal" id="closingEn"></p>
+    <p class="closing__names reveal" id="closingNames"></p>
+    <div class="closing__share reveal">
+      <button class="btn btn--ghost" id="shareBtn"><span>Share this invitation</span></button>
+      <button class="btn btn--ghost" id="calBtn"><span>Add to calendar</span></button>
+    </div>
+    <p class="closing__credit" id="footerLine"></p>
+  </footer>
+
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
