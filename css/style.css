@@ -1311,71 +1311,6 @@ body.is-locked {
   font-size: 0.65rem;
 }
 
-/* ============================================================
-   STAGE BACKDROP & AMBIANCE SHOWCASE
-   ============================================================ */
-
-.stage-card {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--gold-border);
-  box-shadow: 0 22px 64px rgba(0, 0, 0, 0.55), 0 0 32px var(--gold-glow);
-  margin-top: 28px;
-  background: var(--bg-surface-card);
-  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
-}
-
-.stage-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--gold-pure);
-  box-shadow: 0 28px 74px rgba(0, 0, 0, 0.65), 0 0 44px var(--gold-glow-strong);
-}
-
-.stage-card__media {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
-
-.stage-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.9s var(--ease);
-}
-
-.stage-card:hover .stage-card__media img {
-  transform: scale(1.04);
-}
-
-.stage-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(4, 14, 10, 0.88) 0%, rgba(4, 14, 10, 0.25) 40%, transparent 100%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: clamp(16px, 4vw, 28px);
-  pointer-events: none;
-}
-
-.stage-card__tag {
-  font-family: var(--font-royal);
-  font-size: clamp(0.62rem, 1.8vw, 0.74rem);
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--gold-bright);
-  background: rgba(10, 26, 20, 0.85);
-  border: 1px solid var(--gold-border);
-  padding: 8px 20px;
-  border-radius: 30px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
-}
 
 /* ============================================================
    COUNTDOWN SECTION
@@ -1793,7 +1728,6 @@ body.is-locked {
 /* Card Floral Corners */
 .couple-card,
 .verse__card,
-.stage-card,
 .event-card {
   position: relative;
 }
@@ -1822,16 +1756,14 @@ body.is-locked {
 
 .couple-card:hover .card-floral-corner,
 .event-card:hover .card-floral-corner,
-.verse__card:hover .card-floral-corner,
-.stage-card:hover .card-floral-corner {
+.verse__card:hover .card-floral-corner {
   opacity: 1;
   transform: scale(1.05);
 }
 
 .couple-card:hover .card-floral-corner--br,
 .event-card:hover .card-floral-corner--br,
-.verse__card:hover .card-floral-corner--br,
-.stage-card:hover .card-floral-corner--br {
+.verse__card:hover .card-floral-corner--br {
   transform: scale(-1.05, -1.05);
 }
 
