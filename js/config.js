@@ -68,7 +68,7 @@ var CONFIG = {
     enabled: true,
     title:   "Zariya",
     src:     "assets/audio/zariya.mp3",
-    volume:  0.45,
+    volume:  0.8,
     loop:    true
   },
 

@@ -335,14 +335,16 @@
     audio.loop = true;
     audio.setAttribute("loop", "");
     audio.setAttribute("playsinline", "");
-    audio.volume = typeof m.volume === "number" ? m.volume : 0.45;
+    var target = typeof m.volume === "number" ? m.volume : 0.8;
+    try { audio.volume = target; } catch (e) {}
+    try { audio.load(); } catch (e) {}
     if (musicBtn) musicBtn.hidden = false;
 
     if (musicBtn) {
       musicBtn.addEventListener("click", function () {
         if (audio.paused) {
           userExplicitlyPaused = false;
-          playMusic(2500);
+          playMusic(800);
         } else {
           userExplicitlyPaused = true;
           audio.pause();
@@ -373,7 +375,7 @@
       }
     });
 
-    /* Keep music alive during scroll / touch interaction */
+    /* Keep music alive during scroll / touch interaction if guest unmuted */
     function keepAlive() {
       if (!userExplicitlyPaused && !document.body.classList.contains("is-locked")) {
         if (audio.paused) {
@@ -383,20 +385,22 @@
     }
     window.addEventListener("scroll", keepAlive, { passive: true });
     document.addEventListener("touchstart", keepAlive, { passive: true });
+    document.addEventListener("click", keepAlive, { passive: true });
 
     paintMusic();
   }
 
-  /* Slow starting gentle fade-in for elegant entrance */
+  /* Gentle fade-in starting at audible volume */
   function playMusic(fadeDuration) {
     var m = C.music || {};
     if (!m.enabled || !m.src) return;
-    var target = typeof m.volume === "number" ? m.volume : 0.45;
+    var target = typeof m.volume === "number" ? m.volume : 0.8;
     userExplicitlyPaused = false;
-    var duration = typeof fadeDuration === "number" ? fadeDuration : 3500;
+    var duration = typeof fadeDuration === "number" ? fadeDuration : 1000;
 
     if (audio.paused) {
-      audio.volume = 0;
+      var startVol = Math.min(target, 0.4);
+      try { audio.volume = startVol; } catch (e) {}
       var p = audio.play();
       if (p && p.catch) {
         p.catch(function () {});
@@ -406,17 +410,17 @@
       fadeInterval = setInterval(function () {
         var elapsed = Date.now() - startTime;
         var progress = Math.min(1, elapsed / duration);
-        // Quadratic ease-in: starts whisper-soft and gently ascends
-        var ease = progress * progress;
-        audio.volume = Math.min(target, target * ease);
+        try {
+          audio.volume = Math.min(target, startVol + (target - startVol) * progress);
+        } catch (e) {}
         if (progress >= 1) {
-          audio.volume = target;
+          try { audio.volume = target; } catch (e) {}
           clearInterval(fadeInterval);
           fadeInterval = null;
         }
       }, 50);
     } else {
-      audio.volume = target;
+      try { audio.volume = target; } catch (e) {}
     }
   }
 
@@ -442,20 +446,31 @@
   function wireEnvelope() {
     var env = $("#envelope");
     var openBtn = $("#openBtn");
+    var sealContainer = $(".seal-container");
     if (!openBtn || !env) return;
 
+    var opened = false;
     function openEnvelopeNow(withAudio) {
+      if (opened) return;
+      opened = true;
       env.classList.add("is-open");
       document.body.classList.remove("is-locked");
       window.scrollTo(0, 0);
-      if (withAudio) playMusic(4000);
+      if (withAudio) playMusic(1200);
       setTimeout(function () { env.style.display = "none"; }, 1100);
       revealNow();
     }
 
-    openBtn.addEventListener("click", function () {
+    openBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
       openEnvelopeNow(true);
     });
+
+    if (sealContainer) {
+      sealContainer.addEventListener("click", function () {
+        openEnvelopeNow(true);
+      });
+    }
 
     if (window.location.search.indexOf("open=1") !== -1 || window.location.hash.indexOf("open") !== -1) {
       openEnvelopeNow(false);
