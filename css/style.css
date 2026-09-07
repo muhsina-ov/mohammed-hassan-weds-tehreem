@@ -3,33 +3,34 @@
    Mohammed Hassan & Tehreem · Vincent Wedding Lawn
    ============================================================ */
 
-:root {
-  /* --- TWILIGHT NOCTURNAL LAWN (Default Night Ambiance) --- */
-  --bg-deep: #05100c;
-  --bg-rich: #091a13;
-  --bg-surface: rgba(14, 30, 24, 0.72);
-  --bg-surface-card: rgba(18, 38, 30, 0.78);
-  --bg-surface-hover: rgba(24, 48, 38, 0.88);
-  --bg-glass: rgba(10, 24, 18, 0.65);
+:root,
+[data-theme="maroon"] {
+  /* --- ROYAL VELVET MAROON & CHAMPAGNE (Primary Regal Ambiance) --- */
+  --bg-deep: #190308;
+  --bg-rich: #2c0611;
+  --bg-surface: rgba(44, 7, 18, 0.76);
+  --bg-surface-card: rgba(58, 9, 23, 0.82);
+  --bg-surface-hover: rgba(74, 13, 30, 0.90);
+  --bg-glass: rgba(35, 5, 14, 0.70);
   
-  /* Metallic Gold Palette */
-  --gold-pure: #d4af37;
-  --gold-bright: #fcedc5;
-  --gold-mid: #e3bd68;
-  --gold-deep: #a8842e;
-  --gold-glow: rgba(227, 189, 104, 0.28);
-  --gold-glow-strong: rgba(227, 189, 104, 0.55);
-  --gold-border: rgba(227, 189, 104, 0.35);
-  --gold-border-soft: rgba(227, 189, 104, 0.16);
-  --gold-gradient: linear-gradient(135deg, #fff3d1 0%, #e5c158 50%, #b8912d 100%);
-  --gold-text-gradient: linear-gradient(135deg, #ffffff 0%, #fae6b2 35%, #e0bc68 70%, #caa043 100%);
+  /* Radiant Champagne & Metallic Gold Palette */
+  --gold-pure: #dfb775;
+  --gold-bright: #fff5e2;
+  --gold-mid: #ecc982;
+  --gold-deep: #a87d32;
+  --gold-glow: rgba(236, 201, 130, 0.28);
+  --gold-glow-strong: rgba(236, 201, 130, 0.58);
+  --gold-border: rgba(236, 201, 130, 0.38);
+  --gold-border-soft: rgba(236, 201, 130, 0.18);
+  --gold-gradient: linear-gradient(135deg, #fffbf2 0%, #f3d48e 45%, #c89c3e 100%);
+  --gold-text-gradient: linear-gradient(135deg, #ffffff 0%, #faecd2 30%, #ecc880 70%, #c99e46 100%);
 
   /* Text Colors */
   --text-pure: #ffffff;
-  --text-main: #f5f8f5;
-  --text-soft: #c8d6cb;
-  --text-muted: #8fa594;
-  --text-gold: #e8caa4;
+  --text-main: #fff9f2;
+  --text-soft: #ecd9c7;
+  --text-muted: #baa092;
+  --text-gold: #f8dfbf;
 
   /* Fonts */
   --font-royal: "Cinzel", "Cormorant Garamond", Georgia, serif;
@@ -126,7 +127,7 @@ body.is-locked {
   transform: translateX(-50%);
   width: min(900px, 120vw);
   height: 65vh;
-  background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(227, 189, 104, 0.22) 0%, rgba(14, 34, 26, 0.12) 55%, transparent 80%);
+  background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(245, 222, 170, 0.22) 0%, rgba(44, 7, 18, 0.18) 55%, transparent 80%);
   filter: blur(28px);
   animation: spotlightBreathe 8s ease-in-out infinite alternate;
 }
@@ -139,7 +140,7 @@ body.is-locked {
   width: 55vw;
   height: 55vw;
   max-width: 600px;
-  background: radial-gradient(circle, rgba(17, 56, 39, 0.45) 0%, rgba(227, 189, 104, 0.08) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(140, 20, 52, 0.42) 0%, rgba(236, 201, 130, 0.10) 45%, transparent 70%);
   filter: blur(40px);
   animation: floatOrbLeft 14s ease-in-out infinite alternate;
 }
@@ -151,7 +152,7 @@ body.is-locked {
   width: 50vw;
   height: 50vw;
   max-width: 550px;
-  background: radial-gradient(circle, rgba(227, 189, 104, 0.12) 0%, rgba(17, 56, 39, 0.35) 50%, transparent 75%);
+  background: radial-gradient(circle, rgba(236, 201, 130, 0.14) 0%, rgba(140, 20, 52, 0.38) 50%, transparent 75%);
   filter: blur(40px);
   animation: floatOrbRight 16s ease-in-out infinite alternate;
 }
@@ -252,7 +253,7 @@ body.is-locked {
   place-items: center;
   padding: 24px;
   text-align: center;
-  background: radial-gradient(circle at 50% 30%, #0c261d 0%, #05120d 70%, #020805 100%);
+  background: radial-gradient(circle at 50% 30%, #3e0a1b 0%, #20040c 65%, #100206 100%);
   transition: opacity 1.1s var(--ease), transform 1.1s var(--ease), visibility 1.1s;
 }
 
@@ -266,7 +267,7 @@ body.is-locked {
 .envelope__backdrop-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 45%, rgba(227, 189, 104, 0.18) 0%, transparent 68%);
+  background: radial-gradient(circle at 50% 45%, rgba(236, 201, 130, 0.22) 0%, transparent 68%);
   pointer-events: none;
 }
 
@@ -276,7 +277,7 @@ body.is-locked {
   max-width: 580px;
   width: 100%;
   padding: clamp(36px, 7vw, 56px) clamp(22px, 5.5vw, 48px);
-  background: rgba(13, 33, 25, 0.85);
+  background: rgba(45, 8, 18, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--gold-border);
@@ -601,7 +602,9 @@ body.is-locked {
   transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
 }
 
+[data-theme="maroon"] .theme-icon--moon,
 [data-theme="twilight"] .theme-icon--moon { display: none; }
+[data-theme="maroon"] .theme-icon--sun,
 [data-theme="twilight"] .theme-icon--sun { display: block; }
 [data-theme="champagne"] .theme-icon--moon { display: block; }
 [data-theme="champagne"] .theme-icon--sun { display: none; }

@@ -10,7 +10,7 @@ var CONFIG = {
     bride:        "Tehreem",
     groomArabic:  "محمد حسّان",
     brideArabic:  "تحريم",
-    initials:     { groom: "M", bride: "T" },
+    initials:     { groom: "H", bride: "T" },
     tagline:      "are getting married",
     pageTitle:    "Mohammed Hassan & Tehreem — Wedding Invitation"
   },
@@ -32,12 +32,12 @@ var CONFIG = {
     intro: "With hearts full of gratitude to the Almighty, we joyfully invite you and your family to share in the celebration of our wedding.",
     groomSide: {
       label:   "Groom",
-      parents: "Son of Mohammed's Family",
+      parents: "Son of Mrs. Afroz & Mr. Feroz Khan",
       place:   "Mumbai / Thane"
     },
     brideSide: {
       label:   "Bride",
-      parents: "Daughter of Tehreem's Family",
+      parents: "Daughter of Mrs. Reshma & Mr. Irfan Mulla",
       place:   "Mumbai / Thane"
     },
     note: "Your gracious presence and heartfelt duas are our greatest blessing.",

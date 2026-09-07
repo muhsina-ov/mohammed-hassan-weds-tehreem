@@ -64,11 +64,15 @@
       setText("bridePlace", inv.brideSide.place);
     }
 
-    /* Monogram wreath */
+    /* Monogram wreath & seal */
     var ini = c.initials || {};
-    setText("monoGroom", ini.groom || (c.groom || "").charAt(0));
-    setText("monoBride", ini.bride || (c.bride || "").charAt(0));
+    var gInitial = ini.groom || (c.groom || "").charAt(0) || "H";
+    var bInitial = ini.bride || (c.bride || "").charAt(0) || "T";
+    setText("monoGroom", gInitial);
+    setText("monoBride", bInitial);
     setText("monogramLine", inv.monogramLine);
+    var sealMono = $(".seal-monogram");
+    if (sealMono) sealMono.textContent = gInitial + " & " + bInitial;
 
     setText("footerLine", C.footer && C.footer.line);
 
@@ -332,43 +336,91 @@
     }
   }
 
+  var userExplicitlyPaused = false;
+  var fadeInterval = null;
+
   function setupMusic() {
     var m = C.music || {};
     if (!m.enabled || !m.src) { hide(musicBtn); return; }
     audio.src = m.src;
-    audio.loop = m.loop !== false;
-    audio.volume = typeof m.volume === "number" ? m.volume : 0.35;
+    audio.loop = true;
+    audio.setAttribute("loop", "");
+    audio.setAttribute("playsinline", "");
+    audio.volume = typeof m.volume === "number" ? m.volume : 0.45;
     if (musicBtn) musicBtn.hidden = false;
 
     if (musicBtn) {
       musicBtn.addEventListener("click", function () {
-        if (audio.paused) { playMusic(); } else { audio.pause(); paintMusic(); }
+        if (audio.paused) {
+          userExplicitlyPaused = false;
+          playMusic();
+        } else {
+          userExplicitlyPaused = true;
+          audio.pause();
+          paintMusic();
+        }
       });
     }
+
+    /* Seamless continuous playback: re-trigger on track end */
+    audio.addEventListener("ended", function () {
+      audio.currentTime = 0;
+      var p = audio.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+
     audio.addEventListener("play", paintMusic);
     audio.addEventListener("pause", paintMusic);
     audio.addEventListener("error", function () {
       console.info("External music file not present; royal ambient chime enabled.");
     });
+
+    /* Auto-resume when guest returns to tab/browser */
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden && !userExplicitlyPaused && !document.body.classList.contains("is-locked")) {
+        if (audio.paused) {
+          audio.play().catch(function () {});
+        }
+      }
+    });
+
+    /* Keep music alive during scroll / touch interaction */
+    function keepAlive() {
+      if (!userExplicitlyPaused && !document.body.classList.contains("is-locked")) {
+        if (audio.paused) {
+          audio.play().catch(function () {});
+        }
+      }
+    }
+    window.addEventListener("scroll", keepAlive, { passive: true });
+    document.addEventListener("touchstart", keepAlive, { passive: true });
+
     paintMusic();
   }
 
   function playMusic() {
     var m = C.music || {};
     if (!m.enabled || !m.src) return;
-    var target = typeof m.volume === "number" ? m.volume : 0.35;
-    audio.volume = 0;
-    var p = audio.play();
-    if (p && p.catch) {
-      p.catch(function () {
-        // Autoplay policy prevented music; chime fallback
-      });
+    var target = typeof m.volume === "number" ? m.volume : 0.45;
+    userExplicitlyPaused = false;
+
+    if (audio.paused) {
+      audio.volume = 0;
+      var p = audio.play();
+      if (p && p.catch) {
+        p.catch(function () {
+          // Handled
+        });
+      }
+      if (fadeInterval) clearInterval(fadeInterval);
+      var step = target / 20;
+      fadeInterval = setInterval(function () {
+        audio.volume = Math.min(target, audio.volume + step);
+        if (audio.volume >= target - 0.001) clearInterval(fadeInterval);
+      }, 50);
+    } else {
+      audio.volume = target;
     }
-    var step = target / 30;
-    var fade = setInterval(function () {
-      audio.volume = Math.min(target, audio.volume + step);
-      if (audio.volume >= target - 0.001) clearInterval(fade);
-    }, 60);
   }
 
   function paintMusic() {
@@ -409,8 +461,15 @@
       openEnvelopeNow(true);
     });
 
-    if (window.location.search.indexOf("open=1") !== -1 || window.location.hash === "#open") {
+    if (window.location.search.indexOf("open=1") !== -1 || window.location.hash.indexOf("open") !== -1) {
       openEnvelopeNow(false);
+      var hash = window.location.hash;
+      if (hash && hash !== "#open") {
+        setTimeout(function () {
+          var targetEl = $(hash);
+          if (targetEl) targetEl.scrollIntoView();
+        }, 150);
+      }
     }
   }
 
@@ -440,11 +499,14 @@
   }
 
   function revealNow() {
-    $$(".hero .reveal").forEach(function (el) { el.classList.add("is-in"); });
+    $$(".hero .reveal").forEach(function (el) {
+      el.style.transitionDelay = "0ms";
+      el.classList.add("is-in");
+    });
   }
 
   /* ---------------------------------------------------------
-     10. THEME SWITCHER (Twilight Lawn <-> Royal Champagne)
+     10. THEME SWITCHER (Velvet Maroon <-> Royal Champagne)
      --------------------------------------------------------- */
 
   function setupThemeToggle() {
@@ -455,11 +517,13 @@
     var savedTheme = localStorage.getItem("wedding_theme");
     if (savedTheme) {
       html.setAttribute("data-theme", savedTheme);
+    } else {
+      html.setAttribute("data-theme", "maroon");
     }
 
     btn.addEventListener("click", function () {
-      var current = html.getAttribute("data-theme") || "twilight";
-      var next = current === "twilight" ? "champagne" : "twilight";
+      var current = html.getAttribute("data-theme") || "maroon";
+      var next = (current === "maroon" || current === "twilight") ? "champagne" : "maroon";
       html.setAttribute("data-theme", next);
       localStorage.setItem("wedding_theme", next);
       if (window.updateBackdropTheme) {
@@ -487,7 +551,7 @@
     var interactiveSparks = [];
     var mouse = { x: -1000, y: -1000, active: false };
     var animFrame = null;
-    var theme = document.documentElement.getAttribute("data-theme") || "twilight";
+    var theme = document.documentElement.getAttribute("data-theme") || "maroon";
 
     function resize() {
       width = window.innerWidth;
@@ -556,9 +620,9 @@
       ctx.clearRect(0, 0, width, height);
 
       var isChampagne = theme === "champagne";
-      var baseR = isChampagne ? 245 : 230;
-      var baseG = isChampagne ? 210 : 190;
-      var baseB = isChampagne ? 130 : 95;
+      var baseR = isChampagne ? 248 : 242;
+      var baseG = isChampagne ? 218 : 202;
+      var baseB = isChampagne ? 140 : 126;
 
       // Draw living fireflies
       for (var i = 0; i < particles.length; i++) {
