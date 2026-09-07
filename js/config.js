@@ -47,7 +47,7 @@ var CONFIG = {
   /* ---------- 4. EVENTS ---------- */
   events: [
     {
-      name:    "Wedding Celebration",
+      name:    "Wedding Ceremony",
       iso:     "2026-11-10T19:00:00+05:30",
       dateText:"Tuesday, 10 November 2026",
       timeText:"7:00 PM onwards",

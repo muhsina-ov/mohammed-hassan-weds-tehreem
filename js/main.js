@@ -294,7 +294,7 @@
       var start = new Date(ev.iso);
       var end = new Date(start.getTime() + 4 * 60 * 60 * 1000);
       var fmt = function (d) { return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z"; };
-      var summary = (C.couple.groom || "Mohammed Hassan") + " & " + (C.couple.bride || "Tehreem") + " Wedding Celebration";
+      var summary = (C.couple.groom || "Mohammed Hassan") + " & " + (C.couple.bride || "Tehreem") + " Wedding Ceremony";
 
       var ics = [
         "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Wedding Invitation//EN",
@@ -305,7 +305,7 @@
         "DTEND:" + fmt(end),
         "SUMMARY:" + summary,
         "LOCATION:" + [ev.venue, ev.address].filter(Boolean).join(", "),
-        "DESCRIPTION:" + (ev.name || "Wedding Celebration") + " at " + (ev.venue || "Vincent Wedding Lawn"),
+        "DESCRIPTION:" + (ev.name || "Wedding Ceremony") + " at " + (ev.venue || "Vincent Wedding Lawn"),
         "END:VEVENT", "END:VCALENDAR"
       ].join("\r\n");
 
