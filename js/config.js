@@ -6,13 +6,13 @@ var CONFIG = {
 
   /* ---------- 1. THE COUPLE ---------- */
   couple: {
-    groom:        "Mohammed Hassan",
     bride:        "Tehreem",
-    groomArabic:  "محمد حسّان",
+    groom:        "Mohammed Hassan",
     brideArabic:  "تحريم",
-    initials:     { groom: "H", bride: "T" },
+    groomArabic:  "محمد حسّان",
+    initials:     { bride: "T", groom: "H" },
     tagline:      "are getting married",
-    pageTitle:    "Mohammed Hassan & Tehreem — Wedding Invitation"
+    pageTitle:    "Tehreem & Mohammed Hassan — Wedding Invitation"
   },
 
   /* ---------- 2. RELIGIOUS / CULTURAL FRAMING ---------- */
@@ -30,14 +30,14 @@ var CONFIG = {
   /* ---------- 3. THE INVITATION TEXT ---------- */
   invitation: {
     intro: "With hearts full of gratitude to the Almighty, we joyfully invite you and your family to share in the celebration of our wedding.",
-    groomSide: {
-      label:   "Groom",
-      parents: "Son of Mrs. Afroz & Mr. Feroz Khan",
-      place:   "Mumbai / Thane"
-    },
     brideSide: {
       label:   "Bride",
       parents: "Daughter of Mrs. Reshma & Mr. Irfan Mulla",
+      place:   "Mumbai / Thane"
+    },
+    groomSide: {
+      label:   "Groom",
+      parents: "Son of Mrs. Afroz & Mr. Feroz Khan",
       place:   "Mumbai / Thane"
     },
     note: "Your gracious presence and heartfelt duas are our greatest blessing.",
@@ -86,7 +86,7 @@ var CONFIG = {
 
   /* ---------- 9. FOOTER ---------- */
   footer: {
-    line: "Celebrating the union of Mohammed Hassan & Tehreem"
+    line: "Celebrating the union of Tehreem & Mohammed Hassan"
   }
 };
 

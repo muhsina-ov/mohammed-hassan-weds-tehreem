@@ -20,17 +20,17 @@
 
   function fillContent() {
     var c = C.couple || {};
-    document.title = c.pageTitle || (c.groom + " & " + c.bride);
+    document.title = c.pageTitle || (c.bride + " & " + c.groom);
 
-    ["env-groom", "hero-groom"].forEach(function (id) { setText(id, c.groom); });
     ["env-bride", "hero-bride"].forEach(function (id) { setText(id, c.bride); });
-    setText("cardGroom", c.groom);
+    ["env-groom", "hero-groom"].forEach(function (id) { setText(id, c.groom); });
     setText("cardBride", c.bride);
+    setText("cardGroom", c.groom);
     setText("hero-tagline", c.tagline);
-    setText("closingNames", c.groom + " & " + c.bride);
+    setText("closingNames", c.bride + " & " + c.groom);
 
-    if (c.groomArabic || c.brideArabic) {
-      setText("hero-arabic", [c.groomArabic, c.brideArabic].filter(Boolean).join("  &  "));
+    if (c.brideArabic || c.groomArabic) {
+      setText("hero-arabic", [c.brideArabic, c.groomArabic].filter(Boolean).join("  &  "));
     }
 
     /* Faith block */
@@ -53,26 +53,26 @@
     var inv = C.invitation || {};
     setText("inviteIntro", inv.intro);
     setText("inviteNote", inv.note);
-    if (inv.groomSide) {
-      setText("groomLabel", inv.groomSide.label);
-      setHTML("groomParents", inv.groomSide.parents);
-      setText("groomPlace", inv.groomSide.place);
-    }
     if (inv.brideSide) {
       setText("brideLabel", inv.brideSide.label);
       setHTML("brideParents", inv.brideSide.parents);
       setText("bridePlace", inv.brideSide.place);
     }
+    if (inv.groomSide) {
+      setText("groomLabel", inv.groomSide.label);
+      setHTML("groomParents", inv.groomSide.parents);
+      setText("groomPlace", inv.groomSide.place);
+    }
 
-    /* Monogram wreath & seal */
+    /* Monogram wreath & seal (Tehreem & Hassan -> T & H) */
     var ini = c.initials || {};
-    var gInitial = ini.groom || (c.groom || "").charAt(0) || "H";
     var bInitial = ini.bride || (c.bride || "").charAt(0) || "T";
-    setText("monoGroom", gInitial);
+    var gInitial = ini.groom || (c.groom || "").charAt(0) || "H";
     setText("monoBride", bInitial);
+    setText("monoGroom", gInitial);
     setText("monogramLine", inv.monogramLine);
     var sealMono = $(".seal-monogram");
-    if (sealMono) sealMono.textContent = gInitial + " & " + bInitial;
+    if (sealMono) sealMono.textContent = bInitial + " & " + gInitial;
 
     setText("footerLine", C.footer && C.footer.line);
 
@@ -253,12 +253,12 @@
   function wireShare() {
     var btn = $("#shareBtn");
     if (!btn) return;
-    var title = (C.couple.groom || "Mohammed Hassan") + " & " + (C.couple.bride || "Tehreem") + " — Wedding Invitation";
+    var title = (C.couple.bride || "Tehreem") + " & " + (C.couple.groom || "Mohammed Hassan") + " — Wedding Invitation";
     btn.addEventListener("click", function () {
       if (navigator.share) {
         navigator.share({
           title: title,
-          text: "You are joyfully invited to the wedding of " + (C.couple.groom || "") + " & " + (C.couple.bride || "") + " on 10 November 2026 at Vincent Wedding Lawn.",
+          text: "You are joyfully invited to the wedding of " + (C.couple.bride || "Tehreem") + " & " + (C.couple.groom || "Mohammed Hassan") + " on 10 November 2026 at Vincent Wedding Lawn.",
           url: location.href
         }).catch(function () {});
       } else if (navigator.clipboard) {
