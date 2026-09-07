@@ -305,36 +305,11 @@
   }
 
   /* ---------------------------------------------------------
-     7. MUSIC & AMBIENT CHIME
+     7. BACKGROUND MUSIC (BGM)
      --------------------------------------------------------- */
 
   var audio = $("#bgm");
   var musicBtn = $("#musicBtn");
-
-  function playRoyalChime() {
-    try {
-      var AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      var ctx = new AudioCtx();
-      var notes = [261.63, 329.63, 392.00, 523.25, 659.25]; // C major / harp pentatonic
-      var now = ctx.currentTime;
-      notes.forEach(function (freq, i) {
-        var osc = ctx.createOscillator();
-        var gain = ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(freq, now + i * 0.12);
-        gain.gain.setValueAtTime(0.001, now + i * 0.12);
-        gain.gain.exponentialRampToValueAtTime(0.18, now + i * 0.12 + 0.04);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.12 + 1.8);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now + i * 0.12);
-        osc.stop(now + i * 0.12 + 1.9);
-      });
-    } catch (e) {
-      // Audio context silently handled
-    }
-  }
 
   var userExplicitlyPaused = false;
   var fadeInterval = null;
@@ -353,7 +328,7 @@
       musicBtn.addEventListener("click", function () {
         if (audio.paused) {
           userExplicitlyPaused = false;
-          playMusic();
+          playMusic(2500);
         } else {
           userExplicitlyPaused = true;
           audio.pause();
@@ -372,7 +347,7 @@
     audio.addEventListener("play", paintMusic);
     audio.addEventListener("pause", paintMusic);
     audio.addEventListener("error", function () {
-      console.info("External music file not present; royal ambient chime enabled.");
+      console.info("Audio track error or pending user interaction.");
     });
 
     /* Auto-resume when guest returns to tab/browser */
@@ -398,25 +373,33 @@
     paintMusic();
   }
 
-  function playMusic() {
+  /* Slow starting gentle fade-in for elegant entrance */
+  function playMusic(fadeDuration) {
     var m = C.music || {};
     if (!m.enabled || !m.src) return;
     var target = typeof m.volume === "number" ? m.volume : 0.45;
     userExplicitlyPaused = false;
+    var duration = typeof fadeDuration === "number" ? fadeDuration : 3500;
 
     if (audio.paused) {
       audio.volume = 0;
       var p = audio.play();
       if (p && p.catch) {
-        p.catch(function () {
-          // Handled
-        });
+        p.catch(function () {});
       }
       if (fadeInterval) clearInterval(fadeInterval);
-      var step = target / 20;
+      var startTime = Date.now();
       fadeInterval = setInterval(function () {
-        audio.volume = Math.min(target, audio.volume + step);
-        if (audio.volume >= target - 0.001) clearInterval(fadeInterval);
+        var elapsed = Date.now() - startTime;
+        var progress = Math.min(1, elapsed / duration);
+        // Quadratic ease-in: starts whisper-soft and gently ascends
+        var ease = progress * progress;
+        audio.volume = Math.min(target, target * ease);
+        if (progress >= 1) {
+          audio.volume = target;
+          clearInterval(fadeInterval);
+          fadeInterval = null;
+        }
       }, 50);
     } else {
       audio.volume = target;
@@ -448,11 +431,10 @@
     if (!openBtn || !env) return;
 
     function openEnvelopeNow(withAudio) {
-      if (withAudio) playRoyalChime();
       env.classList.add("is-open");
       document.body.classList.remove("is-locked");
       window.scrollTo(0, 0);
-      if (withAudio) playMusic();
+      if (withAudio) playMusic(4000);
       setTimeout(function () { env.style.display = "none"; }, 1100);
       revealNow();
     }
