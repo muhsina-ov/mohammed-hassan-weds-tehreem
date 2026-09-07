@@ -80,7 +80,7 @@ var CONFIG = {
     whatsappNumber: "",
     whatsappMessage: "Assalamu Alaikum! We are honored to attend the wedding of Tehreem & Mohammed Hassan.",
     contacts: [
-      { name: "Venue Inquiries", phone: "Vincent Wedding Lawn, Mumbra" }
+      { name: "Awaiting to welcome", phone: "Family & Friends", text: "Family & Friends" }
     ]
   },
 

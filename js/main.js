@@ -228,19 +228,33 @@
       (r.contacts || []).forEach(function (c) {
         var d = document.createElement("div");
         d.className = "rsvp__contact";
-        var s = document.createElement("strong");
-        s.textContent = c.name || "";
-        var link = document.createElement("a");
-        var isPhone = /^[\d\s\+\-\(\)]+$/.test(c.phone || "");
-        if (isPhone) {
-          link.href = "tel:" + String(c.phone || "").replace(/\s/g, "");
-        } else {
-          link.href = (mainEvent() && mainEvent().mapUrl) || "#";
-          link.target = "_blank";
+        if (c.name) {
+          var s = document.createElement("strong");
+          s.textContent = c.name;
+          d.appendChild(s);
         }
-        link.textContent = c.phone || "";
-        d.appendChild(s);
-        d.appendChild(link);
+        var val = c.text || c.phone || c.value || "";
+        if (val) {
+          var isPhone = /^[\d\s\+\-\(\)]+$/.test(val);
+          if (isPhone) {
+            var link = document.createElement("a");
+            link.href = "tel:" + String(val).replace(/\s/g, "");
+            link.textContent = val;
+            d.appendChild(link);
+          } else if (c.url) {
+            var link = document.createElement("a");
+            link.href = c.url;
+            link.target = "_blank";
+            link.rel = "noopener";
+            link.textContent = val;
+            d.appendChild(link);
+          } else {
+            var span = document.createElement("span");
+            span.className = "rsvp__contact-val";
+            span.textContent = val;
+            d.appendChild(span);
+          }
+        }
         box.appendChild(d);
       });
     }

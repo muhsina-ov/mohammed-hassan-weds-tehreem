@@ -1488,17 +1488,27 @@ body.is-locked {
 
 .rsvp__contact {
   font-size: 0.96em;
+  text-align: center;
 }
 
 .rsvp__contact strong {
   display: block;
   font-family: var(--font-royal);
   font-weight: 500;
-  font-size: 0.62rem;
+  font-size: 0.64rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold-mid);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+}
+
+.rsvp__contact .rsvp__contact-val,
+.rsvp__contact span {
+  display: inline-block;
+  color: var(--text-pure);
+  font-family: var(--font-serif);
+  font-size: 1.15em;
+  letter-spacing: 0.03em;
 }
 
 .rsvp__contact a {
